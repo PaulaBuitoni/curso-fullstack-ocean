@@ -31,15 +31,13 @@ async function main() {
   // Lista de informações
   const itens = ["Rick Sanchez", "Morty Smith", "Summer Smith"];
   //              0               1              2
-
-  // CRUD -> Lista de informações
+// CRUD -> Lista de informações
 
   // Endpoint Read All -> [GET] /item
   app.get("/item", async function (req, res) {
     const documentos = await collection.find().toArray();
     res.send(documentos);
   });
-
 
 
   // Endpoint Read Single by ID -> [GET] /item/:id
@@ -50,11 +48,20 @@ async function main() {
   });
 
   // Endpoint Create -> [POST] /item
-  app.post("/item", function (req, res) {
+  app.post("/item", async function (req, res) {
     // console.log(req.body);
     const item = req.body;
-    itens.push(item.nome);
-    res.send("Item criado com sucesso!");
+   await collection.insertOne(item)
+    res.send(item);
+  });
+
+  //endpoint update
+  app.put("/item/:id", function(req, res) {
+    const id = req.params.id;
+    const body = req.body;
+
+    console.log(id, body);
+    res.send("Deu bom!");
   });
 
   app.listen(3000);
