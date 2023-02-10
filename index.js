@@ -40,9 +40,7 @@ async function main() {
     res.send(documentos);
   });
 
-  class Teste {
-    constructor() {}
-  }
+
 
   // Endpoint Read Single by ID -> [GET] /item/:id
   app.get("/item/:id", async function (req, res) {
