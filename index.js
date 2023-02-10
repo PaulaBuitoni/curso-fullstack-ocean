@@ -56,11 +56,15 @@ async function main() {
   });
 
   //endpoint update
-  app.put("/item/:id", function(req, res) {
+  app.put("/item/:id", async function(req, res) {
     const id = req.params.id;
     const body = req.body;
 
-    console.log(id, body);
+    //console.log(id, body);
+    await collection.updateOne(
+      { _id: new ObjectId(id) },
+      { $set: body}
+    );
     res.send("Deu bom!");
   });
 
