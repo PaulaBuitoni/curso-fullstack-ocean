@@ -2,7 +2,8 @@ const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
 
 // localhost ou 127.0.0.1
-const DB_URL = "mongodb://127.0.0.1:27017";
+// const DB_URL = "mongodb://127.0.0.1:27017";
+const DB_URL = "mongodb+srv://admin:nNSPyuE95q10o6UN@cluster0.unyeq5n.mongodb.net";
 const DB_NAME = "ocean-bancodados-09-02-2023";
 
 async function main() {
@@ -67,6 +68,11 @@ async function main() {
     );
     res.send("Deu bom!");
   });
+
+  //endpiot delete -> [delete] / item/:id
+  //exercicios
+  // -pesquisar sobre operações de remover itens
+  //
 
   app.listen(3000);
 }
